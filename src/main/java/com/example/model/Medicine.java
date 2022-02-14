@@ -1,7 +1,5 @@
 package com.example.model;
 
-
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,16 +7,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="medicine")
+@Table(name = "medicine")
 public class Medicine {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long mid;
 	private String mname;
-	private int mquantity;
-	private double mprice;
-	private String doa;
-	private String doe;
+	private String mgname;
+	private String mpaking;
 	private String sname;
 	public long getMid() {
 		return mid;
@@ -32,29 +28,17 @@ public class Medicine {
 	public void setMname(String mname) {
 		this.mname = mname;
 	}
-	public int getMquantity() {
-		return mquantity;
+	public String getMgname() {
+		return mgname;
 	}
-	public void setMquantity(int mquantity) {
-		this.mquantity = mquantity;
+	public void setMgname(String mgname) {
+		this.mgname = mgname;
 	}
-	public double getMprice() {
-		return mprice;
+	public String getMpaking() {
+		return mpaking;
 	}
-	public void setMprice(double mprice) {
-		this.mprice = mprice;
-	}
-	public String getDoa() {
-		return doa;
-	}
-	public void setDoa(String doa) {
-		this.doa = doa;
-	}
-	public String getDoe() {
-		return doe;
-	}
-	public void setDoe(String doe) {
-		this.doe = doe;
+	public void setMpaking(String mpaking) {
+		this.mpaking = mpaking;
 	}
 	public String getSname() {
 		return sname;
@@ -62,11 +46,7 @@ public class Medicine {
 	public void setSname(String sname) {
 		this.sname = sname;
 	}
-	
-	
-	
-	
-	
+
 	
 
 }

@@ -13,6 +13,13 @@ public class Customer {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long cid;
 	private String cname;
+	private String cemail;
+	public String getCemail() {
+		return cemail;
+	}
+	public void setCemail(String cemail) {
+		this.cemail = cemail;
+	}
 	private String ccontact;
 	private String caddress;
 	private String cdname;

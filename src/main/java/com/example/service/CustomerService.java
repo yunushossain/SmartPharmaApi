@@ -13,5 +13,9 @@ import com.example.model.Customer;
 public interface CustomerService extends CrudRepository<Customer, Long> {
 	@Query("SELECT c from Customer c where c.cname like %:searchText% or c.cid like %:searchText%")
 	List<Customer> searchCustomer(String searchText);
+	
+	
+	List<Customer> findTop5ByCnameOrderByCnameAsc(String cname);
+	List<Customer> findTop5ByCnameContains(String cnameQuery);
 
 }

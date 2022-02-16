@@ -100,7 +100,7 @@ public class MedicineController {
 	}
 	
 	@GetMapping(value = "/medicine/delete/{id}")
-	public ResponseEntity<?> delete(@PathVariable(value = "mid") Long mid) {
+	public ResponseEntity<?> delete(@PathVariable(value = "id") Long mid) {
 		Map<String, Object> map = new HashMap<>();
 		Medicine medicine = medicineService.findById(mid).get();
 		try {

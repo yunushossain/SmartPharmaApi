@@ -63,6 +63,7 @@ public class CustomerController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(map);
 		}
 	}
+	
 
 
 	@PostMapping(value = "/customer/update")
@@ -107,7 +108,7 @@ public class CustomerController {
 	public ResponseEntity<?> search(@RequestParam(value = "searchText") String searchText) {
 		Map<String, Object> map = new HashMap<>();
 		try {
-			List<Customer> customerlist = customerService.searchCustomer(searchText);
+			List<Customer> customerlist = customerService.findTop5ByCnameContains(searchText);
 			map.put("message", "Data get successfully");
 			map.put("Data", customerlist);
 			map.put("Status code", 200);

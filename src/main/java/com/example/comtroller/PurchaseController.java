@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.model.Customer;
 import com.example.model.Medicine;
 import com.example.model.Purchase;
 import com.example.service.PurchaseService;
@@ -113,6 +114,25 @@ public class PurchaseController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			map.put("message", "Data deletation failed");
+			map.put("Data", null);
+			map.put("Status code", 400);
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(map);
+		}
+	}
+	
+	
+	@GetMapping(value = "/purchase/search")
+	public ResponseEntity<?> search(@RequestParam(value = "searchText") String searchText) {
+		Map<String, Object> map = new HashMap<>();
+		try {
+			List<Purchase> purchaselist = purchaseService.findTop5ByMnameContains(searchText);
+			map.put("message", "Data get successfully");
+			map.put("Data", purchaselist);
+			map.put("Status code", 200);
+			return ResponseEntity.ok(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+			map.put("message", "Data fetch failed");
 			map.put("Data", null);
 			map.put("Status code", 400);
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(map);

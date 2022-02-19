@@ -102,7 +102,7 @@ public class PurchaseController {
 	}
 	
 	@GetMapping(value = "/purchase/delete/{id}")
-	public ResponseEntity<?> delete(@PathVariable(value = "pid") Long pid) {
+	public ResponseEntity<?> delete(@PathVariable(value = "id") Long pid) {
 		Map<String, Object> map = new HashMap<>();
 		Purchase purchase = purchaseService.findById(pid).get();
 		try {

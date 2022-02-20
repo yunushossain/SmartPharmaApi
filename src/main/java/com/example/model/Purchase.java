@@ -24,7 +24,16 @@ public class Purchase {
 	private int quantity;
 	private double mrp;
 	private double rate;
+	private double amount;
 	private double gtotal;
+	
+	public double getAmount() {
+		return amount;
+	}
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+	
 	public double getGtotal() {
 		return gtotal;
 	}

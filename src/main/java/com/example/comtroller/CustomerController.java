@@ -123,5 +123,24 @@ public class CustomerController {
 	}
 	
 	
+	@GetMapping(value = "/customer/getTotalCustomer")
+	public ResponseEntity<?> getTotalCustomer() {
+		Map<String, Object> map = new HashMap<>();
+		try {
+			int customerCount =  (int) customerService.count();
+			map.put("message", "Data get successfully");
+			map.put("Data", customerCount);
+			map.put("Status code", 200);
+			return ResponseEntity.ok(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+			map.put("message", "Data fetch failed");
+			map.put("Data", null);
+			map.put("Status code", 400);
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(map);
+		}
+	}
+	
+	
 	
 }

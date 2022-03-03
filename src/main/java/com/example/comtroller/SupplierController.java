@@ -124,5 +124,23 @@ public class SupplierController {
 	}
 	
 	
+	@GetMapping(value = "/supplier/getTotalSupplier")
+	public ResponseEntity<?> getTotalSupplier() {
+		Map<String, Object> map = new HashMap<>();
+		try {
+			int supplierCount =  (int) supplierService.count();
+			map.put("message", "Data get successfully");
+			map.put("Data", supplierCount);
+			map.put("Status code", 200);
+			return ResponseEntity.ok(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+			map.put("message", "Data fetch failed");
+			map.put("Data", null);
+			map.put("Status code", 400);
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(map);
+		}
+	}
+
 	
 }

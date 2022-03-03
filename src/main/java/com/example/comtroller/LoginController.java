@@ -27,12 +27,13 @@ public class LoginController {
 	public ResponseEntity<?> login(@RequestBody PayLoad payload) {
 		Map<String, Object> map = new HashMap<String, Object>();
 
+
 		try {
-			List<User> userList = (List<User>) userService.findAll();
+			List<User> userList = userService.findByUsername(payload.getUsername());
 
 			if (userList != null && userList.size() > 0) {
 				User user = userList.get(0);
-
+			
 				if (user.getPassword().equals(payload.getPassword())) {
 					map.put("message", "Login Successful");
 					map.put("status", "Success");
